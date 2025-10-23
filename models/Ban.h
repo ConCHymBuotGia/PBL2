@@ -1,52 +1,35 @@
 #ifndef BAN_H
 #define BAN_H
-
 #include <string>
-#include <vector>
-#include <sstream>
-#include <iomanip>
-
-struct MonGoi {
-    std::string tenMon;
-    double gia;
-    int soLuong;
-};
+using namespace std;
 
 class Ban {
 private:
-    std::string maBan_;
-    int soLuongKhach_{0};
-    std::string trangThai_;          // "Trống", "Đang phục vụ", "Đã thanh toán"
-    std::string maNhanVienPhucVu_;
-    std::vector<MonGoi> donHang_;
+    string maBan_{};         // Mã bàn (ví dụ: B01, B02)
+    int sucChua_{0};         // Số lượng khách tối đa
+    bool dangPhucVu_{false}; // true nếu đang có khách
+    string khuVuc_{};        // Khu vực (A, B, ngoài trời, tầng 2,...)
 
 public:
-    // ===== Constructor =====
+    // Hàm dựng / hủy
     Ban() = default;
-    Ban(std::string maBan, std::string trangThai = "Trống");
+    virtual ~Ban() = default;
 
-    // ===== Getter & Setter =====
-    const std::string& getMaBan() const;
-    void setMaBan(const std::string& maBan);
+    Ban(string ma, int sucChua, string khuVuc = "A", bool phucVu = false)
+        : maBan_(move(ma)), sucChua_(sucChua),
+          dangPhucVu_(phucVu), khuVuc_(move(khuVuc)) {}
 
-    const std::string& getTrangThai() const;
-    void setTrangThai(const std::string& tt);
+    // Getter / Setter
+    const string& getMaBan() const { return maBan_; }
+    void setMaBan(const string& ma) { maBan_ = ma; }
 
-    int getSoLuongKhach() const;
-    void setSoLuongKhach(int soLuong);
+    int getSucChua() const { return sucChua_; }
+    void setSucChua(int sc) { sucChua_ = sc; }
 
-    const std::string& getMaNhanVienPhucVu() const;
-    void setMaNhanVienPhucVu(const std::string& maNV);
+    bool getDangPhucVu() const { return dangPhucVu_; }
+    void setDangPhucVu(bool tt) { dangPhucVu_ = tt; }
 
-    const std::vector<MonGoi>& getDonHang() const;
-
-    // ===== Nghiệp vụ =====
-    void datBan(int soLuong, const std::string& maNhanVien);
-    void themMon(const MonGoi& mon);
-    std::string xemDonHang() const;
-    double tinhTongTien() const;
-    void thanhToan();
-    std::string toJSON() const;
+    const string& getKhuVuc() const { return khuVuc_; }
+    void setKhuVuc(const string& kv) { khuVuc_ = kv; }
 };
-
 #endif

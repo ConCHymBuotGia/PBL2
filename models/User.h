@@ -1,42 +1,27 @@
 #ifndef USER_H
 #define USER_H
-
 #include <string>
-#include <sstream>   // dùng cho ostringstream
+using namespace std;
 
 class User {
-protected:
-    std::string hoTen_{};
-    std::string sdt_{};
-    std::string gioiTinh_{};
-
-public:
-    // ===== Constructor & Destructor =====
+    //Cac Thuoc Tinh cua Doi Tuong
+    protected:
+    string hoTen_{};
+    string sdt_{};
+    string gioiTinh_{};
+    public:
+    // Cac ham dung, huy
     User() = default;
     virtual ~User() = default;
+     User(string ten, string sdt, string gt)
+        : hoTen_(move(ten)), sdt_(move(sdt)), gioiTinh_(move(gt)) {}
+    // Su dung cac getter de qua ben UI de in ra hon
+    const string& getHoTen() const { return hoTen_; }
+    void setHoTen(const string& hoTen) { hoTen_ = hoTen; }
+    const string& getSdt() const { return sdt_; }
+    void setSdt(const string& sdt) { sdt_ = sdt; }
+    const string& getGioiTinh() const { return gioiTinh_; }
+    void setGioiTinh(const string& gioiTinh) { gioiTinh_ = gioiTinh; }
 
-    User(std::string ten, std::string sdt, std::string gt)
-        : hoTen_(std::move(ten)), sdt_(std::move(sdt)), gioiTinh_(std::move(gt)) {}
-
-    // ===== Getter & Setter =====
-    const std::string& getHoTen() const { return hoTen_; }
-    void setHoTen(const std::string& hoTen) { hoTen_ = hoTen; }
-
-    const std::string& getSdt() const { return sdt_; }
-    void setSdt(const std::string& sdt) { sdt_ = sdt; }
-
-    const std::string& getGioiTinh() const { return gioiTinh_; }
-    void setGioiTinh(const std::string& gt) { gioiTinh_ = gt; }
-
-    // ===== Hàm ảo trả về thông tin dưới dạng chuỗi =====
-    // -> để UI hoặc console đều có thể sử dụng dễ dàng
-    virtual std::string xemThongTin() const {
-        std::ostringstream os;
-        os << "Ho ten: " << hoTen_ << "\n";
-        os << "So dien thoai: " << sdt_ << "\n";
-        os << "Gioi tinh: " << gioiTinh_;
-        return os.str();
-    }
 };
-
 #endif
