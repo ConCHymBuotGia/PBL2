@@ -1,6 +1,5 @@
 # ninja log v7
-22	75	7836013276526434	E:/PBL2/DUAN/build/ninja-Debug/CMakeFiles/cmake.verify_globs	206dea4ffe98bf5b
+24	71	7836902658962283	E:/PBL2/DUAN/build/ninja-Debug/CMakeFiles/cmake.verify_globs	206dea4ffe98bf5b
 108	2589	7834248853061304	CMakeFiles/MyPBL2project.dir/src/main.cpp.obj	de3ddd26422e41d5
-205	10081	7836000151923205	CMakeFiles/PBL2.dir/src/main.cpp.obj	78d418716ba1325f
-10082	10793	7836000250693117	PBL2.exe	a758a4b7370fa951
-25	74	7836045430609426	E:/PBL2/DUAN/build/ninja-Debug/CMakeFiles/cmake.verify_globs	206dea4ffe98bf5b
+81	9947	7836902659540660	CMakeFiles/PBL2.dir/src/main.cpp.obj	78d418716ba1325f
+9948	11141	7836902758208164	PBL2.exe	a758a4b7370fa951
