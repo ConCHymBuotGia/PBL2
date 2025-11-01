@@ -1,0 +1,19 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "ninja-Debug",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_PREFIX_PATH": "C:/msys64/mingw64",
+        "CMAKE_C_COMPILER": "C:/msys64/mingw64/bin/gcc.exe",
+        "CMAKE_CXX_COMPILER": "C:/msys64/mingw64/bin/g++.exe"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "build-Debug", "configurePreset": "ninja-Debug" }
+  ]
+}
